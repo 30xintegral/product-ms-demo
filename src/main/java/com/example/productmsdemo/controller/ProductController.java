@@ -17,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/create")
-    public void create(ProductRequest productRequest){
+    public void create(@RequestBody ProductRequest productRequest){
         log.info("create api called");
         productService.create(productRequest);
         log.info("succeeded");
