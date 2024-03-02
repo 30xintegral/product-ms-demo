@@ -34,7 +34,7 @@ public class ProductController {
         return productService.getAll();
     }
 
-    @PatchMapping("/decreaseCount/{id}/{count}")
+    @PostMapping("/decreaseCount/{id}/{count}")
     public void decreaseCountBy(@PathVariable Long id, @PathVariable int count){
         productService.decreaseCountBy(id, count);
     }

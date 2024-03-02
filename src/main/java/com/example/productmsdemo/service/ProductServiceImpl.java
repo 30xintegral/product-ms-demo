@@ -44,7 +44,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional
     public void decreaseCountBy(long id,int count) {
         Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("No such product"));
         if (product.getCount()<count){
