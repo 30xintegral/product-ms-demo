@@ -7,6 +7,7 @@ import com.example.productmsdemo.mapper.ProductMapper;
 import com.example.productmsdemo.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void decreaseCountBy(long id,int count) {
         Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("No such product"));
         if (product.getCount()<count){
@@ -52,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void update(Long id,ProductRequest productRequest) {
         Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("No such product"));
         product.setName(productRequest.getName());
