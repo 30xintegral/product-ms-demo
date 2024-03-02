@@ -23,7 +23,7 @@ public class ProductController {
         log.info("succeeded");
     }
 
-    @GetMapping("/getProdById")
+    @GetMapping("/getProdById/{id}")
     public ProductResponse getProductById(@PathVariable Long id){
         log.info("getProductById api called");
         return productService.getById(id);
