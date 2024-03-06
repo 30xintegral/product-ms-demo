@@ -13,7 +13,9 @@ public interface ProductService {
 
     List<ProductResponse> getAll();
 
-    void decreaseCountBy(long id,int count);
+    void decreaseCountBy(Long id,int count);
+
+    void increaseCountBy(Long id, int count);
 
     void update(Long id,ProductRequest productRequest);
 }

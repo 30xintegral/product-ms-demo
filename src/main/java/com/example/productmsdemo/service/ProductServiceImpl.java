@@ -44,12 +44,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void decreaseCountBy(long id,int count) {
+    @Transactional
+    public void decreaseCountBy(Long id,int count) {
         Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("No such product"));
         if (product.getCount()<count){
             throw new RuntimeException("Not enough stock");
         }
         productRepository.decreaseCountById(id, count);
+    }
+
+    @Override
+    @Transactional
+    public void increaseCountBy(Long id, int count) {
+        Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("No such product"));
+        if (count<0){
+            throw new RuntimeException("count can not be less than zero");
+        }
+        productRepository.increaseCountById(id, count);
     }
 
     @Override

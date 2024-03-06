@@ -34,7 +34,7 @@ public class ProductController {
         return productService.getAll();
     }
 
-    @PostMapping("/decreaseCount/{id}/{count}")
+    @PatchMapping("/decreaseCount/{id}/{count}")
     public void decreaseCountBy(@PathVariable Long id, @PathVariable int count){
         productService.decreaseCountBy(id, count);
     }
@@ -42,5 +42,10 @@ public class ProductController {
     @PutMapping("/updateProduct/{id}")
     public void update(@PathVariable Long id, @RequestBody ProductRequest productRequest){
         productService.update(id, productRequest);
+    }
+
+    @PatchMapping("/increaseCount/{id}/{count}")
+    public void increaseCountBy(@PathVariable Long id, @PathVariable int count){
+        productService.increaseCountBy(id, count);
     }
 }
